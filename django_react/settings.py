@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
+    'accounts.apps.AccountsConfig',
     'rest_framework',
     'corsheaders',
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -112,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Montreal'
 
 USE_I18N = True
 
@@ -130,7 +133,17 @@ STATICFILES_DIRS = [
 
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+#Changes the default crispy form template pack to updated bootstrap version
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#Redirects successful login attempts to 'CI-summary' instead of the default 'accounts/profile.html'
+LOGIN_REDIRECT_URL = '/'
+
+LOGIN_URL = 'login'
+
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
-
 ]
